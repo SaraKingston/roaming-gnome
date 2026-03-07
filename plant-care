@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Care - The Roaming Gnome</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Merriweather:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-decoration">
+        <div class="floating-leaf leaf-1">🌿</div>
+        <div class="floating-leaf leaf-2">🍃</div>
+        <div class="floating-leaf leaf-3">🌱</div>
+        <div class="floating-leaf leaf-4">🌾</div>
+    </div>
+
+    <div class="announcement">
+        Thank you so much to everyone who made the 2025 Spring Sale a success! I had so much fun, and am already itching to get started on next year's sale!
+    </div>
+
+    <header class="main-header">
+        <a href="index.html" class="logo-section">
+            <div class="gnome-icon">🌱</div>
+            <div class="site-title">The Roaming Gnome</div>
+        </a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="events.html">Events</a>
+            <div class="nav-dropdown">
+                <a class="nav-link active" href="plants-inventory.html">Plants <span class="arrow">▼</span></a>
+                <div class="dropdown-menu">
+                    <a href="plants-inventory.html">Inventory</a>
+                    <a href="plant-care.html">Plant Care</a>
+                </div>
+            </div>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <div class="hero-inner">
+            <h1>Plant Care</h1>
+            <p class="subtitle">Tips for transplanting, watering, and care for each of the plants I grow</p>
+        </div>
+    </section>
+
+    <div class="content-section">
+        <!-- Vegetables -->
+        <div class="accordion-section">
+            <details open>
+                <summary>🍅 Vegetables</summary>
+                <div class="accordion-content">
+                    <a href="care-tomatoes.html" class="plant-link">Tomatoes</a>
+                    <a href="care-peppers.html" class="plant-link">Peppers</a>
+                    <a href="care-eggplant.html" class="plant-link">Eggplant</a>
+                    <a href="care-onions.html" class="plant-link">Onions</a>
+                    <a href="care-cucumbers.html" class="plant-link">Cucumbers</a>
+                    <a href="care-summer-squash.html" class="plant-link">Summer Squash (zucchini, yellow squash)</a>
+                    <a href="care-winter-squash.html" class="plant-link">Winter Squash (acorn, pumpkin)</a>
+                    <a href="care-spinach.html" class="plant-link">Spinach</a>
+                    <a href="care-lettuce.html" class="plant-link">Lettuce (buttercrunch, romaine)</a>
+                </div>
+            </details>
+        </div>
+
+        <!-- Herbs -->
+        <div class="accordion-section">
+            <details>
+                <summary>🌿 Herbs</summary>
+                <div class="accordion-content">
+                    <a href="care-thyme.html" class="plant-link">Thyme</a>
+                    <a href="care-rosemary.html" class="plant-link">Rosemary</a>
+                    <a href="care-oregano.html" class="plant-link">Oregano</a>
+                    <a href="care-lavender.html" class="plant-link">Lavender</a>
+                    <a href="care-chives.html" class="plant-link">Chives</a>
+                    <a href="care-mint.html" class="plant-link">Mint Family (Mint, Peppermint, Lemon Balm, Catnip)</a>
+                    <a href="care-sage.html" class="plant-link">Sage</a>
+                    <a href="care-basil.html" class="plant-link">Basil</a>
+                    <a href="care-dill.html" class="plant-link">Dill</a>
+                    <a href="care-cilantro.html" class="plant-link">Cilantro</a>
+                </div>
+            </details>
+        </div>
+
+        <!-- Flowers -->
+        <div class="accordion-section">
+            <details>
+                <summary>🌸 Flowers</summary>
+                <div class="accordion-content">
+                    <a href="care-petunias.html" class="plant-link">Petunias</a>
+                    <a href="care-snapdragons.html" class="plant-link">Snapdragons</a>
+                    <a href="care-coleus.html" class="plant-link">Coleus</a>
+                    <a href="care-marigolds.html" class="plant-link">Marigolds</a>
+                    <a href="care-pansies.html" class="plant-link">Pansies</a>
+                    <a href="care-impatiens.html" class="plant-link">Impatiens</a>
+                    <a href="care-johnny-jump-ups.html" class="plant-link">Johnny Jump Ups</a>
+                    <a href="care-zinnias.html" class="plant-link">Zinnias</a>
+                </div>
+            </details>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- YouTube Recommendations -->
+    <div class="content-section" style="text-align: center;">
+        <p style="font-style: italic; color: var(--text-muted); margin-bottom: 10px;">
+            For a deeper dive, everything I know about gardening, I learned from YouTube. Here are some of my favorite channels:
+        </p>
+        <div class="yt-grid">
+            <!-- Replace # with actual YouTube channel URLs and add real thumbnails -->
+            <a href="https://www.youtube.com/@THERUSTEDGARDEN" class="yt-card" target="_blank">
+                <!-- <img src="images/yt-rusted-garden.jpg" class="yt-thumb" alt="Gary Pilarchik"> -->
+                <div class="yt-thumb" style="background: var(--green-light); display: flex; align-items: center; justify-content: center; font-size: 30px;">🌱</div>
+                <div class="yt-name">Gary Pilarchik<br>(The Rusted Garden)</div>
+            </a>
+            <a href="https://www.youtube.com/@nextlevelgardening" class="yt-card" target="_blank">
+                <div class="yt-thumb" style="background: var(--pink-soft); display: flex; align-items: center; justify-content: center; font-size: 30px;">🌿</div>
+                <div class="yt-name">Next Level<br>Gardening</div>
+            </a>
+            <a href="https://www.youtube.com/@simplifygardening" class="yt-card" target="_blank">
+                <div class="yt-thumb" style="background: var(--cream-warm); display: flex; align-items: center; justify-content: center; font-size: 30px;">🌻</div>
+                <div class="yt-name">Simplify<br>Gardening</div>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-tagline">The Roaming Gnome</div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/theroaminggnome24" target="_blank" aria-label="Facebook">📘</a>
+                <a href="https://www.instagram.com/theroaming.gnome/" target="_blank" aria-label="Instagram">📷</a>
+            </div>
+            <div class="footer-email">
+                <a href="mailto:sara@theroaminggnome.net">sara@theroaminggnome.net</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
