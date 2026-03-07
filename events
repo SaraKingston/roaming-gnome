@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Events - The Roaming Gnome</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Merriweather:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-decoration">
+        <div class="floating-leaf leaf-1">🌿</div>
+        <div class="floating-leaf leaf-2">🍃</div>
+        <div class="floating-leaf leaf-3">🌱</div>
+        <div class="floating-leaf leaf-4">🌾</div>
+    </div>
+
+    <div class="announcement">
+        Thank you so much to everyone who made the 2025 Spring Sale a success! I had so much fun, and am already itching to get started on next year's sale!
+    </div>
+
+    <header class="main-header">
+        <a href="index.html" class="logo-section">
+            <div class="gnome-icon">🌱</div>
+            <div class="site-title">The Roaming Gnome</div>
+        </a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="events.html" class="active">Events</a>
+            <div class="nav-dropdown">
+                <a class="nav-link" href="plants-inventory.html">Plants <span class="arrow">▼</span></a>
+                <div class="dropdown-menu">
+                    <a href="plants-inventory.html">Inventory</a>
+                    <a href="plant-care.html">Plant Care</a>
+                </div>
+            </div>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <!-- Add class "with-image" and style="background-image: url('images/events-hero.jpg')" for a photo background -->
+        <div class="hero-inner">
+            <h1>Upcoming Events</h1>
+            <p class="subtitle">Come find your next favorite plant</p>
+        </div>
+    </section>
+
+    <div class="highlight-banner sold-out">
+        We are sold out for 2025! Thank you so much for visiting — we're excited to see you next year!
+    </div>
+
+    <div class="content-section">
+        <!-- Google Calendar Embed -->
+        <div class="info-card">
+            <h3>📅 Sale Calendar</h3>
+            <div class="embed-container">
+                <!-- 
+                    Replace the src below with your actual Google Calendar embed URL.
+                    To get it: Google Calendar > Settings > your calendar > "Integrate calendar" > "Embed code"
+                    Copy just the URL from the src="..." part of the iframe code Google gives you.
+                -->
+                <iframe src="https://calendar.google.com/calendar/embed?src=theroaminggnome24%40gmail.com&ctz=America%2FChicago" 
+                        height="400" 
+                        style="border: 0;" 
+                        title="The Roaming Gnome Event Calendar"></iframe>
+            </div>
+            <p style="text-align: center; margin-top: 15px;">
+                <a href="https://calendar.google.com/calendar/u/0?cid=dGhlcm9hbWluZ2dub21lMjRAZ21haWwuY29t" target="_blank" style="font-size: 14px;">
+                    Add to Google Calendar
+                </a>
+            </p>
+        </div>
+
+        <!-- Sale Details -->
+        <div class="info-card">
+            <h3>🌻 Plant Yard Sale</h3>
+            <div class="event-grid">
+                <div>
+                    <!-- 
+                        Replace with your Google Maps embed URL.
+                        Go to Google Maps > find your location > Share > Embed a map > copy the src URL
+                    -->
+                    <div class="embed-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2817.716529431539!2d-93.4673718884643!3d45.07126117094955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x52b3485ad540e00d%3A0x27d4842807fe1643!2s14565%2064th%20Ave%20N%2C%20Maple%20Grove%2C%20MN%2055311!5e0!3m2!1sen!2sus!4v1772904294929!5m2!1sen!2sus" 
+                                height="280" 
+                                style="border:0;" 
+                                allowfullscreen loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="Sale Location Map"></iframe>
+                    </div>
+                </div>
+                <div>
+                    <p style="font-family: 'Comfortaa', cursive; font-weight: 600; font-size: 15px; margin-bottom: 15px;">
+                        2026 Spring Sale Dates:
+                    </p>
+                    <ul class="event-details" style="list-style: none; margin-left: 0;">
+                        <li>🌱 Saturday, May 2 — 9 am to 1 pm</li>
+                        <li>🌱 Sunday, May 3 — 9 am to 1 pm</li>
+                        <li>🌱 Saturday, May 9 — 9 am to 1 pm</li>
+                        <li>🌱 Sunday, May 10 — 9 am to 1 pm</li>
+                    </ul>
+                    <p style="margin-top: 15px; font-size: 15px;">
+                        📍 14565 64th Ave N, Maple Grove, MN
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment & Pre-orders -->
+        <div class="info-card" style="text-align: center;">
+            <h3>💳 Payment</h3>
+            <p>Venmo, tap-to-pay, and cash are all accepted.</p>
+            <p style="font-size: 14px; color: var(--text-muted);">(Limited change available for cash customers.)</p>
+            <div class="payment-methods" style="justify-content: center; margin-top: 20px;">
+                <span class="payment-tag">Venmo</span>
+                <span class="payment-tag">Tap-to-Pay</span>
+                <span class="payment-tag">Cash</span>
+            </div>
+        </div>
+
+        <!-- Can't make it? -->
+        <div style="text-align: center; padding: 30px 0;">
+            <p style="font-style: italic; font-size: 18px; color: var(--green-mid); max-width: 600px; margin: 0 auto 25px; line-height: 1.6;">
+                If you're unable to make it to a sale, I'm happy to take orders and set plants aside for you to pick up at your convenience! Contact info is below.
+            </p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="plants-inventory.html" class="btn btn-primary">See What's For Sale</a>
+                <a href="contact.html" class="btn btn-outline">Contact Me</a>
+            </div>
+        </div>
+    </div>
+
+    <section class="footer-cta">
+        <h2>Stay in the Loop!</h2>
+        <div class="cta-buttons">
+            <a href="contact.html" class="btn btn-secondary">
+                <span>🌷</span> Get in Touch
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-tagline">The Roaming Gnome</div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/theroaminggnome24" target="_blank" aria-label="Facebook">📘</a>
+                <a href="https://www.instagram.com/theroaming.gnome/" target="_blank" aria-label="Instagram">📷</a>
+            </div>
+            <div class="footer-email">
+                <a href="mailto:sara@theroaminggnome.net">sara@theroaminggnome.net</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
