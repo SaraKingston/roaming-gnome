@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Roaming Gnome - Spring Plant Sale</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Merriweather:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green-deep: #3d4a3d;
+            --green-mid: #6a9b6a;
+            --green-soft: #8ab88a;
+            --green-light: #d4e8d4;
+            --pink-logo: #f0b3b3;
+            --pink-soft: #f5cece;
+            --pink-blush: #faf0ef;
+            --pink-accent: #e89b9b;
+            --brown-warm: #d4a574;
+            --brown-mid: #b88a5e;
+            --cream: #fdfcfa;
+            --cream-warm: #f5f0e8;
+            --text-muted: #6a7a6a;
+            --border-dotted: #d4c9b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            color: var(--green-deep);
+            overflow-x: hidden;
+        }
+
+        /* Animated background elements */
+        .background-decoration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .floating-leaf {
+            position: absolute;
+            opacity: 0.12;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .leaf-1 { top: 10%; left: 5%; animation-delay: 0s; font-size: 40px; }
+        .leaf-2 { top: 60%; right: 10%; animation-delay: 5s; font-size: 50px; }
+        .leaf-3 { bottom: 20%; left: 15%; animation-delay: 10s; font-size: 35px; }
+        .leaf-4 { top: 30%; right: 20%; animation-delay: 7s; font-size: 45px; }
+        .leaf-5 { top: 45%; left: 40%; animation-delay: 3s; font-size: 30px; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+
+        /* Header */
+        .announcement {
+            background: linear-gradient(135deg, var(--green-soft) 0%, var(--green-mid) 100%);
+            color: white;
+            padding: 14px 20px;
+            text-align: center;
+            font-size: 15px;
+            border-bottom: 3px solid rgba(255,255,255,0.2);
+        }
+
+        .main-header {
+            background-color: var(--cream);
+            padding: 25px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px dotted var(--border-dotted);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .logo-section:hover {
+            transform: translateY(-2px);
+        }
+
+        .gnome-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--pink-logo);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 4px 15px rgba(240, 179, 179, 0.4);
+            position: relative;
+        }
+
+        .gnome-icon::after {
+            content: '';
+            position: absolute;
+            top: -3px;
+            right: -3px;
+            width: 20px;
+            height: 20px;
+            background-color: var(--green-soft);
+            border-radius: 50%;
+            border: 2px solid var(--cream);
+        }
+
+        .site-title {
+            font-family: 'Comfortaa', cursive;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--green-deep);
+            letter-spacing: 0.5px;
+        }
+
+        nav {
+            display: flex;
+            gap: 35px;
+        }
+
+        nav a {
+            color: var(--green-deep);
+            text-decoration: none;
+            font-family: 'Comfortaa', cursive;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--green-soft), var(--pink-accent));
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--green-mid);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(165deg, var(--cream-warm) 0%, #ede4d8 40%, var(--pink-blush) 100%);
+            padding: 100px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(240, 179, 179, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(138, 184, 138, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-family: 'Comfortaa', cursive;
+            font-size: 58px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--green-deep);
+            line-height: 1.2;
+        }
+
+        .hero-text .subtitle {
+            font-size: 24px;
+            font-style: italic;
+            color: var(--green-mid);
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .tolkien-quote {
+            background-color: rgba(255, 255, 255, 0.6);
+            padding: 25px;
+            border-left: 4px solid var(--pink-accent);
+            font-style: italic;
+            font-size: 17px;
+            line-height: 1.8;
+            color: #5a6a5a;
+            margin-top: 30px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .quote-author {
+            text-align: right;
+            margin-top: 12px;
+            font-size: 14px;
+            color: #7a8a7a;
+        }
+
+        .hero-illustration {
+            position: relative;
+        }
+
+        .illustration-container {
+            width: 100%;
+            max-width: 450px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Illustrated Gnome Path */
+        .gnome-path {
+            width: 100%;
+            height: 400px;
+            position: relative;
+        }
+
+        .path-line {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .path-segment {
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(180deg, var(--brown-warm), var(--brown-mid));
+            border-radius: 2px;
+            opacity: 0.5;
+        }
+
+        .segment-1 { left: 50px; top: 20px; height: 100px; transform: rotate(20deg); }
+        .segment-2 { left: 100px; top: 100px; height: 120px; transform: rotate(-10deg); }
+        .segment-3 { left: 150px; top: 200px; height: 80px; transform: rotate(30deg); }
+        .segment-4 { left: 200px; top: 260px; height: 100px; transform: rotate(-5deg); }
+
+        .plant-marker {
+            position: absolute;
+            font-size: 35px;
+            animation: bounce 2s infinite;
+        }
+
+        .marker-1 { top: 50px; left: 80px; animation-delay: 0.2s; }
+        .marker-2 { top: 140px; left: 140px; animation-delay: 0.5s; }
+        .marker-3 { top: 240px; left: 190px; animation-delay: 0.8s; }
+        .marker-4 { top: 320px; left: 240px; animation-delay: 1.1s; }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .wandering-gnome {
+            position: absolute;
+            bottom: 30px;
+            right: 60px;
+            font-size: 50px;
+            animation: wander 3s infinite alternate ease-in-out;
+        }
+
+        @keyframes wander {
+            0% { transform: translateX(0) rotate(-5deg); }
+            100% { transform: translateX(20px) rotate(5deg); }
+        }
+
+        /* Navigation Cards */
+        .nav-cards {
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-family: 'Comfortaa', cursive;
+            font-size: 42px;
+            color: var(--green-deep);
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+        }
+
+        .nav-card {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-warm) 100%);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 3px solid transparent;
+            transition: all 0.4s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(138, 184, 138, 0.08) 0%, rgba(240, 179, 179, 0.08) 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .nav-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Alternate card hover colors: green and pink */
+        .nav-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(138, 184, 138, 0.3);
+            border-color: var(--green-soft);
+        }
+
+        .nav-card:nth-child(2):hover,
+        .nav-card:nth-child(4):hover {
+            border-color: var(--pink-accent);
+            box-shadow: 0 15px 40px rgba(240, 179, 179, 0.3);
+        }
+
+        .card-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            display: inline-block;
+            transition: transform 0.4s;
+        }
+
+        .nav-card:hover .card-icon {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        .card-title {
+            font-family: 'Comfortaa', cursive;
+            font-size: 26px;
+            color: var(--green-deep);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .card-description {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Mission Statement - pink/green split */
+        .mission {
+            background: linear-gradient(135deg, var(--green-soft) 0%, var(--green-mid) 50%, #7aaa8a 100%);
+            padding: 70px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission::before {
+            content: '🌷';
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.08;
+            top: 50%;
+            left: 10%;
+            transform: translateY(-50%) rotate(-15deg);
+        }
+
+        .mission::after {
+            content: '🌱';
+            position: absolute;
+            font-size: 180px;
+            opacity: 0.08;
+            top: 50%;
+            right: 10%;
+            transform: translateY(-50%) rotate(15deg);
+        }
+
+        .mission-text {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .mission-text p {
+            font-size: 28px;
+            color: white;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        /* Footer CTA - blush pink background */
+        .footer-cta {
+            background: linear-gradient(180deg, var(--cream-warm) 0%, var(--pink-blush) 100%);
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .footer-cta h2 {
+            font-family: 'Comfortaa', cursive;
+            font-size: 38px;
+            color: var(--green-deep);
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-family: 'Comfortaa', cursive;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cta-primary {
+            background: linear-gradient(135deg, var(--green-soft) 0%, var(--green-mid) 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(138, 184, 138, 0.4);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(138, 184, 138, 0.5);
+        }
+
+        .cta-secondary {
+            background-color: white;
+            color: var(--green-deep);
+            border: 2px solid var(--pink-accent);
+        }
+
+        .cta-secondary:hover {
+            background-color: var(--pink-logo);
+            color: var(--green-deep);
+            border-color: var(--pink-logo);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--green-deep);
+            color: var(--border-dotted);
+            padding: 50px 40px 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-tagline {
+            font-family: 'Comfortaa', cursive;
+            font-size: 24px;
+            margin-bottom: 25px;
+            color: var(--pink-soft);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(240, 179, 179, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background-color: var(--pink-logo);
+            transform: scale(1.1);
+        }
+
+        .footer-email {
+            font-size: 16px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(212, 201, 184, 0.3);
+        }
+
+        .footer-email a {
+            color: var(--green-soft);
+            text-decoration: none;
+        }
+
+        .footer-email a:hover {
+            text-decoration: underline;
+        }
+
+        /* Decorative divider between sections */
+        .section-divider {
+            text-align: center;
+            padding: 10px 0;
+            background: linear-gradient(90deg, transparent, var(--pink-soft), var(--green-light), var(--pink-soft), transparent);
+            height: 3px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-text h1 {
+                font-size: 42px;
+            }
+
+            .illustration-container {
+                display: none;
+            }
+
+            .main-header {
+                flex-direction: column;
+                gap: 25px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-button {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-decoration">
+        <div class="floating-leaf leaf-1">🌿</div>
+        <div class="floating-leaf leaf-2">🍃</div>
+        <div class="floating-leaf leaf-3">🌱</div>
+        <div class="floating-leaf leaf-4">🌾</div>
+        <div class="floating-leaf leaf-5">🌸</div>
+    </div>
+
+    <div class="announcement">
+        Thank you so much to everyone who made the 2025 Spring Sale a success! I had so much fun, and am already itching to get started on next year's sale!
+    </div>
+
+    <header class="main-header">
+        <div class="logo-section">
+            <div class="gnome-icon">🌱</div>
+            <div class="site-title">The Roaming Gnome</div>
+        </div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#events">Events</a>
+            <a href="#plants">Plants</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Welcome to The Roaming Gnome</h1>
+                <p class="subtitle">Rooted in quality; sprouted in joy</p>
+                
+                <div class="tolkien-quote">
+                    All that is gold does not glitter, not all those who wander are lost; the old that is strong does not wither, deep roots are not reached by the frost.
+                    <div class="quote-author">— J.R.R. Tolkien</div>
+                </div>
+            </div>
+
+            <div class="hero-illustration">
+                <div class="illustration-container">
+                    <div class="gnome-path">
+                        <div class="path-line">
+                            <div class="path-segment segment-1"></div>
+                            <div class="path-segment segment-2"></div>
+                            <div class="path-segment segment-3"></div>
+                            <div class="path-segment segment-4"></div>
+                        </div>
+                        <div class="plant-marker marker-1">🌷</div>
+                        <div class="plant-marker marker-2">🌿</div>
+                        <div class="plant-marker marker-3">🌻</div>
+                        <div class="plant-marker marker-4">🍃</div>
+                        <div class="wandering-gnome">🧚</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="nav-cards">
+        <div class="section-header">
+            <h2>Start Your Journey</h2>
+            <p>Whether you're looking for your next garden addition or learning to care for what you have</p>
+        </div>
+
+        <div class="card-grid">
+            <div class="nav-card" onclick="location.href='#plants'">
+                <div class="card-icon">🌸</div>
+                <h3 class="card-title">Browse Plants</h3>
+                <p class="card-description">Explore vegetables, herbs, and flowers for your garden</p>
+            </div>
+
+            <div class="nav-card" onclick="location.href='#events'">
+                <div class="card-icon">📅</div>
+                <h3 class="card-title">Upcoming Events</h3>
+                <p class="card-description">See where I'm roaming next and join the sale</p>
+            </div>
+
+            <div class="nav-card" onclick="location.href='#care'">
+                <div class="card-icon">💚</div>
+                <h3 class="card-title">Plant Care Tips</h3>
+                <p class="card-description">Learn how to help your plants thrive</p>
+            </div>
+
+            <div class="nav-card" onclick="location.href='#about'">
+                <div class="card-icon">🧚</div>
+                <h3 class="card-title">About the Gnome</h3>
+                <p class="card-description">Meet me and learn about The Roaming Gnome story</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="mission">
+        <div class="mission-text">
+            <p>At The Roaming Gnome, my goal is to get outside and appreciate nature, and to help others do the same.</p>
+        </div>
+    </section>
+
+    <section class="footer-cta">
+        <h2>Stay in the Loop!</h2>
+        <div class="cta-buttons">
+            <a href="#newsletter" class="cta-button cta-primary">
+                <span>🌱</span>
+                <span>Subscribe to Updates</span>
+            </a>
+            <a href="#contact" class="cta-button cta-secondary">
+                <span>🌷</span>
+                <span>Get in Touch</span>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-tagline">The Roaming Gnome</div>
+            <div class="social-links">
+                <a href="#facebook">📘</a>
+                <a href="#instagram">📷</a>
+            </div>
+            <div class="footer-email">
+                <a href="mailto:sara@theroaminggnome.net">sara@theroaminggnome.net</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
