@@ -615,6 +615,10 @@ footer {
     .cta-buttons { flex-direction: column; align-items: center; }
     .btn { width: 100%; max-width: 300px; justify-content: center; }
 }
+/* Quick-reference grid */
+@media (max-width: 600px) {
+    .quick-ref-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
 @media (max-width: 500px) {
     .yt-grid { grid-template-columns: 1fr; max-width: 250px; margin: 20px auto 0; }
     .contact-methods { flex-direction: column; align-items: center; }
