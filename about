@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - The Roaming Gnome</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Merriweather:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-decoration">
+        <div class="floating-leaf leaf-1">🌿</div>
+        <div class="floating-leaf leaf-2">🍃</div>
+        <div class="floating-leaf leaf-3">🌱</div>
+        <div class="floating-leaf leaf-4">🌾</div>
+    </div>
+
+    <div class="announcement">
+        Thank you so much to everyone who made the 2025 Spring Sale a success! I had so much fun, and am already itching to get started on next year's sale!
+    </div>
+
+    <header class="main-header">
+        <a href="index.html" class="logo-section">
+            <div class="gnome-icon">🌱</div>
+            <div class="site-title">The Roaming Gnome</div>
+        </a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="events.html">Events</a>
+            <div class="nav-dropdown">
+                <a class="nav-link" href="plants-inventory.html">Plants <span class="arrow">▼</span></a>
+                <div class="dropdown-menu">
+                    <a href="plants-inventory.html">Inventory</a>
+                    <a href="plant-care.html">Plant Care</a>
+                </div>
+            </div>
+            <a href="about.html" class="active">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <div class="hero-inner">
+            <h1>About Me</h1>
+        </div>
+    </section>
+
+    <div class="content-section" style="text-align: center;">
+        <h2 class="about-name">Sara Kingston</h2>
+        <p class="about-title">Chief Seedling Officer</p>
+
+        <div class="about-photo">
+            <!-- Replace with your actual photo: <img src="images/sara.jpg" alt="Sara Kingston"> -->
+            <div style="height: 350px; background: linear-gradient(135deg, var(--green-light), var(--pink-soft)); display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-family: 'Comfortaa', cursive; font-size: 14px;">
+                Your photo here
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section" style="padding-top: 0;">
+        <p>
+            Every spring, I get the itch to grow plants. The problem is, I move too much to keep a garden. So, I started growing plants from seed and selling the seedlings to fellow gardeners. By the time I head north for the summer, my plants have found new homes, and my gardening itch is officially scratched.
+        </p>
+        <p>
+            I've moved more than 20 times in my life, wearing many hats along the way: dentist, military officer, and hospitality entrepreneur. But no matter where I've landed, I've always found ways to dig in the dirt, grow something green, and (most importantly) spend time outside.
+        </p>
+        <p>
+            These days, I roam between the north woods of Minnesota, the outskirts of Los Angeles, the beaches of Florida, and the suburbs of Minneapolis. Wherever I go, you'll find me outdoors, soaking up sunshine, and of course, growing plants. 🌷
+        </p>
+
+        <div class="photo-grid">
+            <!-- Replace with your garden photos -->
+            <!-- <img src="images/garden-1.jpg" alt="Seedlings growing"> -->
+            <!-- <img src="images/garden-2.jpg" alt="Watering the garden"> -->
+            <div style="height: 250px; background: linear-gradient(135deg, var(--green-light), var(--cream-warm)); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-family: 'Comfortaa', cursive; font-size: 14px;">
+                Garden photo 1
+            </div>
+            <div style="height: 250px; background: linear-gradient(135deg, var(--cream-warm), var(--pink-soft)); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-family: 'Comfortaa', cursive; font-size: 14px;">
+                Garden photo 2
+            </div>
+        </div>
+    </div>
+
+    <section class="mission">
+        <div class="mission-text">
+            <p>At The Roaming Gnome, my goal is to get outside and appreciate nature, and to help others do the same.</p>
+        </div>
+    </section>
+
+    <section class="footer-cta">
+        <h2>Want to say hello?</h2>
+        <div class="cta-buttons">
+            <a href="contact.html" class="btn btn-primary">
+                <span>🌷</span> Get in Touch
+            </a>
+            <a href="events.html" class="btn btn-secondary">
+                <span>📅</span> Find the Next Sale
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-tagline">The Roaming Gnome</div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/theroaminggnome24" target="_blank" aria-label="Facebook">📘</a>
+                <a href="https://www.instagram.com/theroaming.gnome/" target="_blank" aria-label="Instagram">📷</a>
+            </div>
+            <div class="footer-email">
+                <a href="mailto:sara@theroaminggnome.net">sara@theroaminggnome.net</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
