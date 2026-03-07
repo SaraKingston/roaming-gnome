@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory - The Roaming Gnome</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Merriweather:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-decoration">
+        <div class="floating-leaf leaf-1">🌿</div>
+        <div class="floating-leaf leaf-2">🍃</div>
+        <div class="floating-leaf leaf-3">🌱</div>
+        <div class="floating-leaf leaf-4">🌾</div>
+    </div>
+
+    <div class="announcement">
+        Thank you so much to everyone who made the 2025 Spring Sale a success! I had so much fun, and am already itching to get started on next year's sale!
+    </div>
+
+    <header class="main-header">
+        <a href="index.html" class="logo-section">
+            <div class="gnome-icon">🌱</div>
+            <div class="site-title">The Roaming Gnome</div>
+        </a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="events.html">Events</a>
+            <div class="nav-dropdown">
+                <a class="nav-link active" href="plants-inventory.html">Plants <span class="arrow">▼</span></a>
+                <div class="dropdown-menu">
+                    <a href="plants-inventory.html">Inventory</a>
+                    <a href="plant-care.html">Plant Care</a>
+                </div>
+            </div>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <div class="hero-inner">
+            <h1>Inventory</h1>
+            <p class="subtitle">What's growing this season</p>
+        </div>
+    </section>
+
+    <div class="highlight-banner sold-out">
+        We are sold out for 2025! Thank you so much for visiting — we're excited to see you next year!
+    </div>
+
+    <div class="content-section">
+        <!-- Pre-order Info -->
+        <div class="info-card">
+            <div class="preorder-card">
+                <div>
+                    <!-- Replace with your actual Venmo QR code image -->
+                    <!-- <img src="images/venmo-qr.png" alt="Venmo QR Code for The Roaming Gnome" class="venmo-qr"> -->
+                    <div class="venmo-qr" style="height: 180px; background: var(--cream-warm); display: flex; align-items: center; justify-content: center; font-family: 'Comfortaa', cursive; font-size: 12px; color: var(--text-muted); text-align: center; padding: 15px;">
+                        Venmo QR<br>code here
+                    </div>
+                </div>
+                <div>
+                    <h3>Now accepting pre-orders!</h3>
+                    <p>
+                        Please email me with which plants you'd like, and I'll set them aside for you to pick up during one of the sales.
+                    </p>
+                    <p>
+                        $10 hold fee (will be applied toward your purchase).
+                    </p>
+                    <p>
+                        <a href="mailto:sara@theroaminggnome.net">Email me to place an order</a> or scan the Venmo QR code for the hold fee.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Special Announcement -->
+        <div class="special-announcement">
+            <h3>🍁 New this year! Fresh maple syrup tapped and bottled by Brickyard Smokehouse in Shakopee, MN!</h3>
+        </div>
+
+        <!-- Live Inventory -->
+        <div class="info-card">
+            <h3 style="text-align: center;">🌿 Live Inventory</h3>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 20px; font-size: 14px;">
+                This updates in real time as plants are sold. Check back during sale weekends for the latest availability!
+            </p>
+            <div class="embed-container">
+                <!-- 
+                    Replace with your published Google Sheet URL.
+                    In Google Sheets: File > Share > Publish to web > choose the sheet/range > Publish
+                    Use the "Embed" link it gives you.
+                -->
+                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRMEhqcdV74dfd59S82GieyewqTcSc_4_Sr4wlQh-mwQeAWMYTdYVHw883XMSbi9Cn_P1uyODhbW7Sw/pubhtml?gid=710501935&amp;single=true" 
+                        height="600" 
+                        title="Roaming Gnome Inventory"></iframe>
+            </div>
+        </div>
+
+        <div style="text-align: center; padding: 20px 0;">
+            <a href="events.html" class="btn btn-primary">📅 Find the Next Sale</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-tagline">The Roaming Gnome</div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/theroaminggnome24" target="_blank" aria-label="Facebook">📘</a>
+                <a href="https://www.instagram.com/theroaming.gnome/" target="_blank" aria-label="Instagram">📷</a>
+            </div>
+            <div class="footer-email">
+                <a href="mailto:sara@theroaminggnome.net">sara@theroaminggnome.net</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
