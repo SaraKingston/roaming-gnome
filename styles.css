@@ -513,13 +513,35 @@ footer {
     padding: 10px 25px 25px;
 }
 .plant-link {
-    display: block; padding: 10px 15px;
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 16px; margin: 4px 0;
     color: var(--green-deep); text-decoration: none;
-    border-radius: 8px; transition: background 0.2s;
-    font-size: 15px;
+    border-radius: 10px; transition: all 0.25s;
+    font-size: 15px; border: 1px solid transparent;
 }
 .plant-link:hover {
-    background: var(--cream-warm); color: var(--green-mid);
+    background: linear-gradient(135deg, var(--cream-warm) 0%, var(--pink-blush) 100%);
+    border-color: rgba(212,201,184,0.4);
+    color: var(--green-mid);
+    transform: translateX(4px);
+}
+.plant-link::before {
+    content: '🌱'; font-size: 14px; flex-shrink: 0;
+}
+.plant-link:nth-child(even)::before { content: '🌿'; }
+/* Specific category icons */
+.accordion-content.veggies .plant-link::before { content: '🥬'; }
+.accordion-content.veggies .plant-link:nth-child(even)::before { content: '🌱'; }
+.accordion-content.herbs .plant-link::before { content: '🌿'; }
+.accordion-content.herbs .plant-link:nth-child(even)::before { content: '🍃'; }
+.accordion-content.flowers .plant-link::before { content: '🌸'; }
+.accordion-content.flowers .plant-link:nth-child(even)::before { content: '💐'; }
+.plant-link::after {
+    content: '→'; margin-left: auto; font-size: 14px;
+    color: var(--border-dotted); transition: all 0.25s;
+}
+.plant-link:hover::after {
+    color: var(--green-mid); transform: translateX(3px);
 }
 
 /* ---- YouTube Section ---- */
