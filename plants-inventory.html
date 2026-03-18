@@ -8,6 +8,81 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Merriweather:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .inventory-section { margin-bottom: 35px; }
+        .inventory-section-header {
+            font-family: 'Comfortaa', cursive;
+            font-size: 24px; font-weight: 700;
+            color: var(--green-deep);
+            padding: 15px 20px;
+            background: linear-gradient(135deg, var(--cream-warm) 0%, var(--pink-blush) 100%);
+            border-radius: 14px 14px 0 0;
+            border-bottom: 2px solid var(--green-light);
+            display: flex; align-items: center; gap: 10px;
+        }
+        .inventory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1px;
+            background: rgba(212,201,184,0.2);
+            border-radius: 0 0 14px 14px;
+            overflow: hidden;
+        }
+        .plant-item {
+            background: white;
+            padding: 16px 20px;
+            display: flex; justify-content: space-between; align-items: center;
+            transition: background 0.2s;
+        }
+        .plant-item:hover { background: var(--cream); }
+        .plant-name { font-size: 15px; color: var(--green-deep); font-weight: 500; }
+        .plant-meta { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+        .plant-price {
+            font-family: 'Comfortaa', cursive;
+            font-size: 14px; font-weight: 600; color: var(--green-mid);
+        }
+        .plant-qty {
+            font-size: 12px; padding: 4px 10px; border-radius: 20px;
+            font-family: 'Comfortaa', cursive; font-weight: 600;
+        }
+        .qty-available { background: var(--green-light); color: var(--green-deep); }
+        .qty-low { background: #fef3cd; color: #856404; }
+        .qty-preseason { background: var(--cream-warm); color: var(--text-muted); }
+        .qty-out { background: var(--pink-soft); color: var(--pink-accent); }
+        .plant-item-soldout { opacity: 0.5; }
+        .plant-item-soldout .plant-name { text-decoration: line-through; }
+        .qty-out { background: var(--pink-soft); color: #b07070; }
+        .plant-item.sold-out { opacity: 0.55; }
+        .plant-item.sold-out .plant-name { text-decoration: line-through; }
+        .qty-out {
+            background: var(--pink-soft); color: var(--pink-accent);
+            font-style: italic;
+        }
+        .plant-item.sold-out { opacity: 0.55; }
+        .plant-item.sold-out .plant-name { text-decoration: line-through; }
+        .inventory-loading {
+            text-align: center; padding: 60px 20px;
+            color: var(--text-muted); font-family: 'Comfortaa', cursive;
+        }
+        .inventory-loading .spinner {
+            display: inline-block; width: 30px; height: 30px;
+            border: 3px solid var(--green-light); border-top-color: var(--green-mid);
+            border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 15px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .inventory-error {
+            text-align: center; padding: 40px; color: var(--pink-accent); font-style: italic;
+        }
+        .inventory-legend {
+            display: flex; gap: 15px; flex-wrap: wrap;
+            justify-content: center; margin-bottom: 25px; font-size: 13px;
+        }
+        .legend-item { display: flex; align-items: center; gap: 6px; }
+        .legend-dot { width: 12px; height: 12px; border-radius: 50%; }
+        @media (max-width: 600px) {
+            .inventory-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
     <div class="background-decoration">
@@ -48,10 +123,6 @@
         </div>
     </section>
 
-    <div class="highlight-banner sold-out">
-        We are sold out for 2025! Thank you so much for visiting — we're excited to see you next year!
-    </div>
-
     <div class="content-section">
         <!-- Pre-order Info -->
         <div class="info-card">
@@ -80,19 +151,26 @@
         </div>
 
         <!-- Live Inventory -->
-        <div class="info-card">
-            <h3 style="text-align: center;">🌿 Live Inventory</h3>
-            <p style="text-align: center; color: var(--text-muted); margin-bottom: 20px; font-size: 14px;">
-                This updates in real time as plants are sold. Check back during sale weekends for the latest availability!
-            </p>
-            <div class="embed-container" style="max-width: 600px; margin: 0 auto;">
-                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRMEhqcdV74dfd59S82GieyewqTcSc_4_Sr4wlQh-mwQeAWMYTdYVHw883XMSbi9Cn_P1uyODhbW7Sw/pubhtml?gid=710501935&amp;single=true&amp;widget=true&amp;headers=false" 
-                        height="600" 
-                        title="Roaming Gnome Inventory"></iframe>
+        <h3 style="text-align: center; font-family: 'Comfortaa', cursive; font-size: 28px; color: var(--green-deep); margin: 35px 0 10px;">🌿 Live Inventory</h3>
+        <p style="text-align: center; color: var(--text-muted); margin-bottom: 15px; font-size: 14px;">
+            This updates in real time as plants are sold. Check back during sale weekends for the latest availability!
+        </p>
+
+        <div class="inventory-legend">
+            <div class="legend-item"><div class="legend-dot" style="background: var(--green-light);"></div> In stock</div>
+            <div class="legend-item"><div class="legend-dot" style="background: #fef3cd;"></div> Low stock</div>
+            <div class="legend-item"><div class="legend-dot" style="background: var(--cream-warm);"></div> Coming soon</div>
+            <div class="legend-item"><div class="legend-dot" style="background: var(--pink-soft);"></div> Sold out</div>
+        </div>
+
+        <div id="inventory-container">
+            <div class="inventory-loading">
+                <div class="spinner"></div>
+                <div>Loading inventory...</div>
             </div>
         </div>
 
-        <div style="text-align: center; padding: 20px 0;">
+        <div style="text-align: center; padding: 30px 0;">
             <a href="events.html" class="btn btn-primary">📅 Find the Next Sale</a>
         </div>
     </div>
@@ -109,5 +187,193 @@
             </div>
         </div>
     </footer>
+
+    <script>
+    /*  =============================================
+        CONFIGURATION
+        Edit the category map if you add/rename categories in your sheet.
+        Everything else is automatic.
+        ============================================= */
+
+    // Published CSV URL for your inventory sheet tab
+    // To get this: File > Share > Publish to web > select your sheet tab >
+    // change "Web page" to "Comma-separated values (.csv)" > Publish
+    const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRMEhqcdV74dfd59S82GieyewqTcSc_4_Sr4wlQh-mwQeAWMYTdYVHw883XMSbi9Cn_P1uyODhbW7Sw/pub?gid=710501935&single=true&output=csv';
+
+    // Map spreadsheet category names → display names, emojis, and sort order
+    const CATEGORY_MAP = {
+        'Perennial herbs':   { display: 'Herbs (Perennial)',        emoji: '🌿', order: 1 },
+        'Annual herbs':      { display: 'Herbs (Annual)',           emoji: '🌿', order: 2 },
+        'Warm crops A':      { display: 'Vegetables',               emoji: '🍅', order: 3 },
+        'Warm crops B':      { display: 'Vegetables (Vine Crops)',   emoji: '🥒', order: 4 },
+        'Cool crops':        { display: 'Cool Season Crops',        emoji: '🥬', order: 5 },
+        'Annual flowers':    { display: 'Flowers (Annual)',          emoji: '🌸', order: 6 },
+        'Perennial flowers': { display: 'Flowers (Perennial)',       emoji: '🌷', order: 7 },
+        'Other':             { display: 'Other Goodies',             emoji: '🍁', order: 8 },
+    };
+
+    /*  =============================================
+        DATA FETCHING & RENDERING
+        ============================================= */
+
+    function parseCSV(text) {
+        const results = [];
+        let row = [];
+        let cell = '';
+        let inQuotes = false;
+
+        for (let i = 0; i < text.length; i++) {
+            const c = text[i];
+            const next = text[i + 1];
+
+            if (inQuotes) {
+                if (c === '"' && next === '"') {
+                    cell += '"';
+                    i++;
+                } else if (c === '"') {
+                    inQuotes = false;
+                } else {
+                    cell += c;
+                }
+            } else {
+                if (c === '"') {
+                    inQuotes = true;
+                } else if (c === ',') {
+                    row.push(cell);
+                    cell = '';
+                } else if (c === '\n' || (c === '\r' && next === '\n')) {
+                    row.push(cell);
+                    cell = '';
+                    results.push(row);
+                    row = [];
+                    if (c === '\r') i++;
+                } else if (c === '\r') {
+                    row.push(cell);
+                    cell = '';
+                    results.push(row);
+                    row = [];
+                } else {
+                    cell += c;
+                }
+            }
+        }
+        // Last row
+        if (cell || row.length) {
+            row.push(cell);
+            results.push(row);
+        }
+        return results;
+    }
+
+    async function loadInventory() {
+        const container = document.getElementById('inventory-container');
+
+        try {
+            const response = await fetch(SHEET_CSV_URL);
+            if (!response.ok) throw new Error('Failed to fetch');
+            const text = await response.text();
+            const rows = parseCSV(text);
+
+            // Find the header row (contains "Plant")
+            let headerIdx = -1;
+            for (let i = 0; i < Math.min(rows.length, 10); i++) {
+                if (rows[i].some(c => c.trim() === 'Plant')) { headerIdx = i; break; }
+            }
+            if (headerIdx === -1) throw new Error('Header row not found');
+
+            const headers = rows[headerIdx].map(h => h.trim());
+            const col = name => headers.indexOf(name);
+
+            // Parse plant data
+            const plants = [];
+            for (let i = headerIdx + 1; i < rows.length; i++) {
+                const r = rows[i];
+                const name = (r[col('Plant')] || '').trim();
+                const category = (r[col('Category')] || '').trim();
+                const forSale = (r[col('For sale?')] || '').trim();
+                const price = (r[col('Unit Price')] || '').trim();
+                const qtyRaw = (r[col('Quantity in stock')] || '').trim();
+
+                if (!name || !category || forSale !== 'Yes') continue;
+
+                let qty = null; // null = not yet counted / pre-season
+                if (qtyRaw && qtyRaw !== '#N/A' && qtyRaw !== '') {
+                    const n = parseInt(qtyRaw, 10);
+                    if (!isNaN(n)) qty = n;
+                }
+
+                plants.push({ name, category, price, qty });
+            }
+
+            // Group by category
+            const groups = {};
+            plants.forEach(p => {
+                if (!groups[p.category]) groups[p.category] = [];
+                groups[p.category].push(p);
+            });
+
+            // Sort categories by configured order
+            const sortedCats = Object.keys(groups).sort((a, b) => {
+                return ((CATEGORY_MAP[a] || {}).order || 99) - ((CATEGORY_MAP[b] || {}).order || 99);
+            });
+
+            // Build HTML
+            let html = '';
+            sortedCats.forEach(cat => {
+                const info = CATEGORY_MAP[cat] || { display: cat, emoji: '🌱', order: 99 };
+                const items = groups[cat].sort((a, b) => {
+                    // Sold out items go to the bottom
+                    const aOut = (a.qty !== null && a.qty <= 0) ? 1 : 0;
+                    const bOut = (b.qty !== null && b.qty <= 0) ? 1 : 0;
+                    if (aOut !== bOut) return aOut - bOut;
+                    return a.name.localeCompare(b.name);
+                });
+
+                html += '<div class="inventory-section">';
+                html += '<div class="inventory-section-header">' + info.emoji + ' ' + info.display + '</div>';
+                html += '<div class="inventory-grid">';
+
+                items.forEach(item => {
+                    let badge = '';
+                    let soldOutClass = '';
+                    if (item.qty !== null && item.qty <= 0) {
+                        badge = '<span class="plant-qty qty-out">Sold out!</span>';
+                        soldOutClass = ' plant-item-soldout';
+                    } else if (item.qty === null) {
+                        badge = '<span class="plant-qty qty-preseason">Coming soon</span>';
+                    } else if (item.qty <= 3) {
+                        badge = '<span class="plant-qty qty-low">' + item.qty + ' left</span>';
+                    } else {
+                        badge = '<span class="plant-qty qty-available">' + item.qty + ' available</span>';
+                    }
+
+                    html += '<div class="plant-item' + soldOutClass + '">'
+                        + '<div><div class="plant-name">' + item.name + '</div></div>'
+                        + '<div class="plant-meta">'
+                        + '<span class="plant-price">' + item.price + '</span>'
+                        + badge
+                        + '</div></div>';
+                });
+
+                html += '</div></div>';
+            });
+
+            if (!html) {
+                html = '<div class="inventory-loading" style="color: var(--green-mid);">🌱 No plants listed yet! Check back closer to sale time.</div>';
+            }
+
+            container.innerHTML = html;
+
+        } catch (err) {
+            console.error('Inventory load error:', err);
+            container.innerHTML = '<div class="inventory-error">'
+                + '<p>Couldn\'t load the inventory right now. Please try refreshing the page!</p>'
+                + '<p style="margin-top: 15px;"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRMEhqcdV74dfd59S82GieyewqTcSc_4_Sr4wlQh-mwQeAWMYTdYVHw883XMSbi9Cn_P1uyODhbW7Sw/pubhtml?gid=710501935&single=true" target="_blank" style="color: var(--green-mid);">View inventory spreadsheet directly</a></p>'
+                + '</div>';
+        }
+    }
+
+    loadInventory();
+    </script>
 </body>
 </html>
