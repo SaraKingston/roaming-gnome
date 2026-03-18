@@ -36,19 +36,21 @@
         }
         .plant-item:hover { background: var(--cream); }
         .plant-name { font-size: 15px; color: var(--green-deep); font-weight: 500; }
-        .plant-meta { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+        .plant-meta { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
         .plant-price {
             font-family: 'Comfortaa', cursive;
             font-size: 14px; font-weight: 600; color: var(--green-mid);
+            width: 55px; text-align: right;
         }
         .plant-qty {
-            font-size: 12px; padding: 4px 10px; border-radius: 20px;
+            font-size: 12px; padding: 4px 8px; border-radius: 20px;
             font-family: 'Comfortaa', cursive; font-weight: 600;
+            width: 100px; text-align: center; display: inline-block;
         }
         .qty-available { background: var(--green-light); color: var(--green-deep); }
         .qty-low { background: #fef3cd; color: #856404; }
         .qty-preseason { background: var(--cream-warm); color: var(--text-muted); }
-        .qty-out { background: var(--pink-soft); color: var(--pink-accent); }
+        .qty-out { background: var(--pink-soft); color: #9b3a3a; font-weight: 700; }
         .plant-item-soldout { opacity: 0.5; }
         .plant-item-soldout .plant-name { text-decoration: line-through; }
         .qty-out { background: var(--pink-soft); color: #b07070; }
