@@ -72,6 +72,8 @@
         }
         .plant-item.sold-out { opacity: 0.55; }
         .plant-item.sold-out .plant-name { text-decoration: line-through; }
+        .plant-care-link { color: inherit; text-decoration: none; }
+        .plant-care-link:hover { color: var(--green-mid); text-decoration: underline; }
         .inventory-loading {
             text-align: center; padding: 60px 20px;
             color: var(--text-muted); font-family: 'Comfortaa', cursive;
@@ -211,6 +213,77 @@
     // To get this: File > Share > Publish to web > select your sheet tab >
     // change "Web page" to "Comma-separated values (.csv)" > Publish
     const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRMEhqcdV74dfd59S82GieyewqTcSc_4_Sr4wlQh-mwQeAWMYTdYVHw883XMSbi9Cn_P1uyODhbW7Sw/pub?gid=710501935&single=true&output=csv';
+
+    // Map plant name keywords → care page URLs (longer keys checked first for specificity)
+    const CARE_LINKS = {
+        'acorn squash':     'care/winter-squash.html',
+        'pumpkin':          'care/winter-squash.html',
+        'winter squash':    'care/winter-squash.html',
+        'squash (green)':   'care/summer-squash.html',
+        'squash (yellow)':  'care/summer-squash.html',
+        'zucchini':         'care/summer-squash.html',
+        'summer squash':    'care/summer-squash.html',
+        'sweet alyssum':    'care/sweet-alyssum.html',
+        'black-eyed susan': 'care/black-eyed-susan.html',
+        'shasta daisy':     'care/shasta-daisy.html',
+        'bee balm':         'care/bee-balm.html',
+        'blanket flower':   'care/gaillardia.html',
+        'gaillardia':       'care/gaillardia.html',
+        'bachelor':         'care/bachelor-buttons.html',
+        'cornflower':       'care/bachelor-buttons.html',
+        'coneflower':       'care/echinacea.html',
+        'echinacea':        'care/echinacea.html',
+        'lemon balm':       'care/mint.html',
+        'peppermint':       'care/mint.html',
+        'catmint':          'care/mint.html',
+        'catnip':           'care/mint.html',
+        'johnny jump':      'care/johnny-jump-ups.html',
+        'columbine':        'care/columbine.html',
+        'snapdragon':       'care/snapdragons.html',
+        'nasturtium':       'care/nasturtium.html',
+        'sunflower':        'care/sunflowers.html',
+        'marigold':         'care/marigolds.html',
+        'cucumber':         'care/cucumbers.html',
+        'eggplant':         'care/eggplant.html',
+        'tomato':           'care/tomatoes.html',
+        'pepper':           'care/peppers.html',
+        'onion':            'care/onions.html',
+        'coleus':           'care/coleus.html',
+        'petunia':          'care/petunias.html',
+        'impatiens':        'care/impatiens.html',
+        'geranium':         'care/geraniums.html',
+        'calendula':        'care/calendula.html',
+        'cosmos':           'care/cosmos.html',
+        'zinnia':           'care/zinnias.html',
+        'pansy':            'care/pansies.html',
+        'pansies':          'care/pansies.html',
+        'lupine':           'care/lupine.html',
+        'yarrow':           'care/yarrow.html',
+        'hosta':            'care/hostas.html',
+        'columbine':        'care/columbine.html',
+        'monarda':          'care/bee-balm.html',
+        'lavender':         'care/lavender.html',
+        'rosemary':         'care/rosemary.html',
+        'oregano':          'care/oregano.html',
+        'thyme':            'care/thyme.html',
+        'chives':           'care/chives.html',
+        'cilantro':         'care/cilantro.html',
+        'basil':            'care/basil.html',
+        'sage':             'care/sage.html',
+        'dill':             'care/dill.html',
+        'mint':             'care/mint.html',
+        'squash':           'care/summer-squash.html',
+    };
+
+    function getCareLink(plantName) {
+        const lower = plantName.toLowerCase();
+        // Sort keys longest-first so specific matches win over broad ones
+        const sorted = Object.keys(CARE_LINKS).sort((a, b) => b.length - a.length);
+        for (const key of sorted) {
+            if (lower.includes(key)) return CARE_LINKS[key];
+        }
+        return null;
+    }
 
     // Map spreadsheet category names → display names, emojis, and sort order
     const CATEGORY_MAP = {
@@ -359,8 +432,12 @@
                         badge = '<span class="plant-qty qty-available">' + item.qty + ' available</span>';
                     }
 
+                    const careUrl = getCareLink(item.name);
+                    const nameHtml = careUrl
+                        ? '<a href="' + careUrl + '" class="plant-care-link">' + item.name + '</a>'
+                        : item.name;
                     html += '<div class="plant-item' + soldOutClass + '">'
-                        + '<div><div class="plant-name">' + item.name + '</div></div>'
+                        + '<div><div class="plant-name">' + nameHtml + '</div></div>'
                         + '<div class="plant-meta">'
                         + '<span class="plant-price">' + item.price + '</span>'
                         + badge
