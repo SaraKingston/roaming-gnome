@@ -144,7 +144,7 @@ nav > a.active::after { width: 100%; }
 /* ---- Page Hero Banner ---- */
 .page-hero {
     background: linear-gradient(165deg, var(--cream-warm) 0%, #ede4d8 40%, var(--pink-blush) 100%);
-    padding: 80px 40px;
+    padding: 120px 40px 100px;
     text-align: center; position: relative; overflow: hidden;
 }
 /* For pages with a background image */
@@ -165,9 +165,11 @@ nav > a.active::after { width: 100%; }
 }
 .page-hero.with-image h1 { color: white; text-shadow: 0 2px 15px rgba(0,0,0,0.3); }
 .page-hero .subtitle {
-    font-size: 20px; font-style: italic; color: var(--text-muted);
+    font-size: 19px; font-style: italic; color: var(--text-muted);
+    margin-top: 18px; max-width: 660px; margin-left: auto; margin-right: auto;
+    line-height: 1.7;
 }
-.page-hero.with-image .subtitle { color: rgba(255,255,255,0.9); }
+.page-hero.with-image .subtitle { color: rgba(255,255,255,0.92); text-shadow: 0 1px 8px rgba(0,0,0,0.35); }
 
 /* ---- Home Hero (special) ---- */
 .home-hero {
@@ -632,7 +634,7 @@ footer {
     .yt-grid { grid-template-columns: 1fr 1fr; }
     .preorder-card { grid-template-columns: 1fr; justify-items: center; text-align: center; }
     .content-section { padding: 40px 20px; }
-    .page-hero { padding: 50px 20px; }
+    .page-hero { padding: 70px 20px 55px; }
     .page-hero h1 { font-size: 36px; }
     .cta-buttons { flex-direction: column; align-items: center; }
     .btn { width: 100%; max-width: 300px; justify-content: center; }
