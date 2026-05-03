@@ -316,7 +316,11 @@ nav > a.active::after { width: 100%; }
 }
 .footer-cta h2 {
     font-family: 'Comfortaa', cursive; font-size: 34px;
-    color: var(--green-deep); margin-bottom: 35px;
+    color: var(--green-deep); margin-bottom: 20px;
+}
+.footer-cta p {
+    color: var(--text-muted); font-size: 17px; max-width: 520px;
+    margin: 0 auto 30px;
 }
 .cta-buttons {
     display: flex; gap: 20px;
