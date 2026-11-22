@@ -115,7 +115,7 @@
     </div>
 
     <div class="announcement">
-        🌱 Spring Plant Sale 2026 is almost here! May 2, 3, 9 &amp; 10 in Maple Grove. See you there!
+        🌱 2027 Spring Plant Sale coming in May! <a href="contact" style="color: inherit; text-decoration: underline;">Sign up</a> for updates and pre-order access.
     </div>
 
     <header class="main-header">
@@ -210,6 +210,10 @@
     // Published CSV URL for your inventory sheet tab
     // To get this: File > Share > Publish to web > select your sheet tab >
     // change "Web page" to "Comma-separated values (.csv)" > Publish
+    // TODO: Once the 2027 spreadsheet is published to web (File > Share > Publish to web >
+    //       select "Inventory" tab > change to "Comma-separated values (.csv)" > Publish),
+    //       replace this URL with the new published CSV URL.
+    //       Spreadsheet: https://docs.google.com/spreadsheets/d/1anAAM9WxM2VGSTwR8Lz5O65TFlWldPL7Sh1noF-_aSE/edit
     const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRMEhqcdV74dfd59S82GieyewqTcSc_4_Sr4wlQh-mwQeAWMYTdYVHw883XMSbi9Cn_P1uyODhbW7Sw/pub?gid=710501935&single=true&output=csv';
 
     // Map plant name keywords → care page URLs (longer keys checked first for specificity)
@@ -455,7 +459,7 @@
             console.error('Inventory load error:', err);
             container.innerHTML = '<div class="inventory-error">'
                 + '<p>Couldn\'t load the inventory right now. Please try refreshing the page!</p>'
-                + '<p style="margin-top: 15px;"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRMEhqcdV74dfd59S82GieyewqTcSc_4_Sr4wlQh-mwQeAWMYTdYVHw883XMSbi9Cn_P1uyODhbW7Sw/pub?gid=710501935&single=true&output=csv" target="_blank">View the inventory spreadsheet directly</a></p>'
+                + '<p style="margin-top: 15px;"><a href="https://docs.google.com/spreadsheets/d/1anAAM9WxM2VGSTwR8Lz5O65TFlWldPL7Sh1noF-_aSE/edit" target="_blank">View the inventory spreadsheet directly</a></p>'
                 + '</div>';
         }
     }
